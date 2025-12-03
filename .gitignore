@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Output files (keep structure, ignore content)
+outputs/*.log
+outputs/data/*.json
+outputs/data/*.txt
+outputs/presentations/*.pptx
+outputs/screenshots/*.png
+outputs/screenshots/*.jpg
+
+# Keep directory structure
+!outputs/.gitkeep
+!outputs/data/.gitkeep
+!outputs/presentations/.gitkeep
+!outputs/screenshots/.gitkeep
+
+# Credentials
+.env
+.aws/
+credentials.yaml
+secrets.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log

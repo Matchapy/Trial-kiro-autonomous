@@ -1,0 +1,112 @@
+# AWS re:Invent 2025 Research Automation Configuration
+
+# Blog Configuration
+blog:
+  url: "https://www.aboutamazon.com/aws-reinvent-news-updates"
+  timeout: 30  # seconds
+  retry_attempts: 3
+  
+# Research Configuration
+research:
+  max_services: 10  # Maximum number of services to research
+  max_screenshots: 5  # Maximum number of services to screenshot
+  include_pricing: true
+  include_documentation: true
+  include_examples: true
+
+# Screenshot Configuration
+screenshots:
+  enabled: true
+  headless: true  # Run browser in headless mode
+  window_size:
+    width: 1920
+    height: 1080
+  capture_types:
+    - main_console
+    - pricing_page
+  delay_between_captures: 2  # seconds
+
+# AWS Console Configuration
+aws_console:
+  base_url: "https://console.aws.amazon.com"
+  login_required: false  # Set to true if you have credentials
+  timeout: 30  # seconds
+  
+# Presentation Configuration
+presentation:
+  title: "AWS re:Invent 2025"
+  subtitle: "New Services and Features"
+  include_toc: true
+  slides_per_service:
+    - overview
+    - problems_benefits
+    - pricing
+    - usage_examples
+    - screenshots
+  
+# Output Configuration
+output:
+  base_dir: "outputs"
+  subdirs:
+    screenshots: "screenshots"
+    presentations: "presentations"
+    data: "data"
+  formats:
+    presentation: "pptx"
+    data: "json"
+    report: "txt"
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "outputs/automation.log"
+  console: true
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Rate Limiting
+rate_limiting:
+  requests_per_second: 1
+  delay_between_services: 1  # seconds
+  delay_between_screenshots: 2  # seconds
+
+# Service Filtering
+filters:
+  # Keywords to identify AWS service announcements
+  keywords:
+    - aws
+    - amazon
+    - launch
+    - announce
+    - new
+    - service
+    - feature
+    - available
+    - general availability
+    - ga
+  
+  # Services to exclude (if any)
+  exclude_services: []
+  
+  # Minimum title length to consider
+  min_title_length: 10
+
+# Documentation Integration
+documentation:
+  search_limit: 10  # Number of search results per service
+  read_max_length: 5000  # Max characters to read from each doc
+  include_recommendations: true
+
+# Pricing Integration
+pricing:
+  default_region: "us-east-1"
+  include_free_tier: true
+  pricing_terms:
+    - OnDemand
+    - FlatRate
+  
+# Error Handling
+error_handling:
+  continue_on_error: true  # Continue processing other services if one fails
+  retry_on_network_error: true
+  max_retries: 3
+  retry_delay: 5  # seconds
