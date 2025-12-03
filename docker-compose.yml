@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  reinvent-automation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: reinvent-automation
+    volumes:
+      # Mount outputs directory to persist results
+      - ./outputs:/app/outputs
+      # Mount config for easy customization
+      - ./config.yaml:/app/config.yaml:ro
+    environment:
+      # AWS credentials (if needed)
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN:-}
+      # Logging
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    # Override command for different configurations
+    # command: ["--max-services", "5", "--skip-screenshots"]
+    
+    # Resource limits (optional)
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
